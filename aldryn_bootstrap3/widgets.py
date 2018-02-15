@@ -9,40 +9,38 @@ from .conf import settings
 import django
 
 
-if django.VERSION < (1,11):
-    # use RadioFieldRenderer
+# SelectFieldCompatMixin and LegacyTemplateRenderer only needed on Django<1.11
+class LegacyTemplateRenderer(django.forms.widgets.RadioFieldRenderer if django.VERSION < (1,11) else object):
+    template_name = None
 
-    class TemplateRenderer(django.forms.widgets.RadioFieldRenderer):
-        template_name = None
+    def render(self):
+        from django.template.loader import render_to_string
+        return render_to_string(
+            self.template_name,
+            {'selects': self},
+        )
 
-        def render(self):
-            from django.template.loader import render_to_string
-            return render_to_string(
-                self.template_name,
-                {'selects': self},
-            )
-else:
-    class TemplateRenderer(object):
-        pass
 
-class ContextRenderer(TemplateRenderer):
+class SelectFieldCompatMixin(object):
+    def __init__(self, *args, **kwargs):
+        if django.VERSION < (1,11):            
+            my_template_name = self.template_name
+            class MyTemplateRenderer(LegacyTemplateRenderer):
+                template_name = my_template_name
+            self.renderer = MyTemplateRenderer
+        return super(SelectFieldCompatMixin, self).__init__(*args, **kwargs)
+
+
+class Context(SelectFieldCompatMixin, django.forms.widgets.RadioSelect):
     template_name = 'admin/aldryn_bootstrap3/widgets/context.html'
 
-class SizeRenderer(TemplateRenderer):
+
+class Size(SelectFieldCompatMixin, django.forms.widgets.RadioSelect):
     template_name = 'admin/aldryn_bootstrap3/widgets/size.html'
 
-class LinkOrButtonRenderer(TemplateRenderer):
+
+class LinkOrButton(SelectFieldCompatMixin, django.forms.widgets.RadioSelect):
     template_name = 'admin/aldryn_bootstrap3/widgets/link_or_button.html'
-    
-    
-class Context(django.forms.widgets.RadioSelect):
-    renderer = ContextRenderer
-    template_name = 'admin/aldryn_bootstrap3/widgets/context.html'
-
-
-class Size(django.forms.widgets.RadioSelect):
-    renderer = SizeRenderer
-    template_name = 'admin/aldryn_bootstrap3/widgets/size.html'
 
 
 class Icon(django.forms.widgets.TextInput):
@@ -78,11 +76,6 @@ class MiniTextarea(django.forms.widgets.Textarea):
         attrs['cols'] = '120'
         attrs['rows'] = '1'
         super(MiniTextarea, self).__init__(attrs)
-
-
-class LinkOrButton(django.forms.widgets.RadioSelect):
-    renderer = LinkOrButtonRenderer
-    template_name = 'admin/aldryn_bootstrap3/widgets/link_or_button.html'
 
 
 class Responsive(django.forms.widgets.Textarea):
