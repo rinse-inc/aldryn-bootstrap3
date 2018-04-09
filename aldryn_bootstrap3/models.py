@@ -55,7 +55,7 @@ class Bootstrap3RowPlugin(CMSPlugin):
         excluded_keys=['class'],
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         return str(self.pk)
@@ -98,7 +98,7 @@ class Bootstrap3ColumnPlugin(CMSPlugin):
         excluded_keys=['class'],
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         txt = ' '.join([self.get_column_classes(), self.classes])
@@ -198,7 +198,7 @@ class Boostrap3BlockquotePlugin(CMSPlugin):
         excluded_keys=['class'],
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         if self.reverse:
@@ -219,7 +219,7 @@ class Boostrap3CitePlugin(CMSPlugin):
         excluded_keys=['class'],
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         return ''
@@ -256,7 +256,7 @@ class Bootstrap3CodePlugin(CMSPlugin):
         excluded_keys=['class'],
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         return '<{}>'.format(self.code_type)
@@ -306,7 +306,7 @@ class Boostrap3ButtonPlugin(CMSPlugin, model_fields.LinkMixin):
     )
     classes = model_fields.Classes()
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         return self.label
@@ -393,7 +393,7 @@ class Boostrap3ImagePlugin(CMSPlugin):
     )
     classes = model_fields.Classes()
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         txt = ''
@@ -460,7 +460,7 @@ class Bootstrap3ResponsivePlugin(CMSPlugin):
         excluded_keys=['class'],
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         text = self.device_breakpoints
@@ -517,7 +517,7 @@ class Boostrap3IconPlugin(CMSPlugin):
         excluded_keys=['class'],
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         return self.icon
@@ -550,7 +550,7 @@ class Boostrap3LabelPlugin(CMSPlugin):
         excluded_keys=['class'],
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         return self.label
@@ -581,7 +581,7 @@ class Boostrap3JumbotronPlugin(CMSPlugin):
         excluded_keys=['class'],
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         return self.label or str(self.pk)
@@ -606,7 +606,7 @@ class Boostrap3AlertPlugin(CMSPlugin):
         excluded_keys=['class'],
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         return self.classes
@@ -630,7 +630,7 @@ class Bootstrap3ListGroupPlugin(CMSPlugin):
         excluded_keys=['class'],
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def get_short_description(self):
         instance = self.get_plugin_instance()[0]
@@ -682,7 +682,7 @@ class Bootstrap3ListGroupItemPlugin(CMSPlugin):
         excluded_keys=['class'],
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         return self.title
@@ -709,7 +709,7 @@ class Boostrap3PanelPlugin(CMSPlugin):
         excluded_keys=['class'],
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         return self.context
@@ -734,7 +734,7 @@ class Boostrap3PanelHeadingPlugin(CMSPlugin):
         excluded_keys=['class'],
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         return self.title
@@ -753,7 +753,7 @@ class Boostrap3PanelBodyPlugin(CMSPlugin):
         excluded_keys=['class'],
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         return self.classes
@@ -772,7 +772,7 @@ class Boostrap3PanelFooterPlugin(CMSPlugin):
         excluded_keys=['class'],
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         return self.classes
@@ -794,7 +794,7 @@ class Boostrap3WellPlugin(CMSPlugin):
         excluded_keys=['class'],
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         return self.classes
@@ -861,7 +861,7 @@ class Bootstrap3TabPlugin(CMSPlugin):
         excluded_keys=['class'],
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         return '{} {}'.format(self.style, self.effect)
@@ -887,7 +887,7 @@ class Bootstrap3TabItemPlugin(CMSPlugin):
         excluded_keys=['class'],
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         return self.title
@@ -912,7 +912,7 @@ class Bootstrap3AccordionPlugin(CMSPlugin):
         excluded_keys=['class'],
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def get_short_description(self):
         instance = self.get_plugin_instance()[0]
@@ -958,7 +958,7 @@ class Bootstrap3AccordionItemPlugin(CMSPlugin):
         excluded_keys=['class'],
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         return self.title
@@ -1033,7 +1033,7 @@ class Bootstrap3CarouselPlugin(CMSPlugin):
         ],
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         data = django.forms.models.model_to_dict(self)
@@ -1117,7 +1117,7 @@ class Bootstrap3CarouselSlidePlugin(CMSPlugin, model_fields.LinkMixin):
     )
     classes = model_fields.Classes()
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         image_text = content_text = ''
@@ -1154,7 +1154,7 @@ class Bootstrap3CarouselSlideFolderPlugin(CMSPlugin):
     )
     classes = model_fields.Classes()
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         if self.folder_id:
@@ -1184,7 +1184,7 @@ class Boostrap3SpacerPlugin(CMSPlugin):
         excluded_keys=['class'],
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         return 'size-' + self.size + ' ' + self.classes
@@ -1226,7 +1226,7 @@ class Bootstrap3FilePlugin(CMSPlugin):
         excluded_keys=['class', 'target'],
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField(on_delete=models.CASCADE)
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         label = self.name
